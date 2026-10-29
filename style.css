@@ -1,0 +1,332 @@
+/* ==========================================================================
+   1. RESETS E VARIÁVEIS GLOBAIS (Acessibilidade e Alto Contraste)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-fundo: #f8f9fa;
+    --cor-texto: #1a1a1a;
+    --cor-primaria: #0d47a1;
+    --cor-primaria-hover: #002171;
+    --cor-borda: #cccccc;
+    
+    /* Cores do Semáforo com alto contraste */
+    --cor-verde: #2e7d32;
+    --cor-amarelo: #f57f17;
+    --cor-vermelho: #c62828;
+    
+    --cor-desativada: #555555;
+    --fonte-principal: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal);
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* Link invisível que aparece com o Tab para acessibilidade */
+.link-atalho {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--cor-primaria);
+    color: #ffffff;
+    padding: 8px;
+    z-index: 100;
+}
+
+.link-atalho:focus {
+    top: 0;
+}
+
+/* Foco visível obrigatório para navegação via teclado */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid #000000;
+    outline-offset: 3px;
+}
+
+.conteiner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.bg-suave {
+    background-color: #eef2f5;
+}
+
+.texto-centralizado {
+    text-align: center;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+.cabecalho-principal {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    padding: 2rem 0 1rem 0;
+}
+
+.titulo-pagina {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo-pagina {
+    font-size: 1.1rem;
+    color: #e3f2fd;
+    margin-bottom: 1.5rem;
+}
+
+.menu-navegacao {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-navegacao a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-navegacao a:hover {
+    background-color: #ffffff;
+    color: var(--cor-primaria);
+}
+
+/* ==========================================================================
+   3. SEÇÕES E CARDS
+   ========================================================================== */
+.secao-conteudo {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.secao-conteudo h2 {
+    font-size: 1.8rem;
+    color: var(--cor-primaria);
+    margin-bottom: 1rem;
+}
+
+.card-alerta {
+    background-color: #fff3cd;
+    border-left: 6px solid #ffc107;
+    color: #533f03;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 4px;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card-dica {
+    background: #ffffff;
+    padding: 1.5rem;
+    border: 2px solid var(--cor-borda);
+    border-radius: 8px;
+}
+
+.card-dica h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   4. SEMÁFORO INTERATIVO
+   ========================================================================== */
+.painel-semaforo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-top: 2rem;
+}
+
+.estrutura-semaforo {
+    background-color: #222222;
+    padding: 1.5rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 140px;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.luz {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    opacity: 0.4;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.luz:hover {
+    opacity: 0.7;
+}
+
+.luz-vermelha { background-color: var(--cor-vermelho); }
+.luz-amarela  { background-color: var(--cor-amarelo); }
+.luz-verde    { background-color: var(--cor-verde); }
+
+/* Estado Ativo configurado via JavaScript */
+.luz.ativa {
+    opacity: 1;
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.icone-luz {
+    font-size: 1.5rem;
+}
+
+.rotulo-luz {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.caixa-explicacao {
+    flex: 1;
+    min-width: 280px;
+    background-color: #ffffff;
+    padding: 1.8rem;
+    border-radius: 8px;
+    border: 3px solid var(--cor-borda);
+    min-height: 250px;
+}
+
+.caixa-explicacao h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.lista-diretrizes {
+    margin-top: 1rem;
+    padding-left: 1.2rem;
+}
+
+.lista-diretrizes li {
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   5. QUIZ E FORMULÁRIO
+   ========================================================================== */
+.formulario-quiz {
+    margin-top: 1.5rem;
+}
+
+.pergunta-group {
+    background-color: #ffffff;
+    border: 2px solid var(--cor-borda);
+    padding: 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.pergunta-group legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: var(--cor-primaria);
+}
+
+.opcao-resposta {
+    display: block;
+    margin-top: 0.8rem;
+    cursor: pointer;
+}
+
+.opcao-resposta input {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+}
+
+.botao-submit {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.botao-submit:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+.caixa-resultado {
+    margin-top: 1.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   6. RODAPÉ E RESPONSIVIDADE
+   ========================================================================== */
+.texto-conclusao {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.rodape-pagina {
+    background-color: #111111;
+    color: #ffffff;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.destaque-rodape {
+    color: #64b5f6;
+}
+
+@media (max-width: 600px) {
+    .painel-semaforo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .estrutura-semaforo {
+        width: 100%;
+        max-width: 280px;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .menu-navegacao {
+        flex-direction: column;
+    }
+}
