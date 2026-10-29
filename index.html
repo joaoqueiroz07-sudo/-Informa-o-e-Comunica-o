@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semáforo da Acessibilidade — Autismo e Comunicação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Link de atalho para acessibilidade por teclado -->
+    <a href="#conteudo-principal" class="link-atalho">Pular para o conteúdo principal</a>
+
+    <!-- Cabeçalho Principal -->
+    <header class="cabecalho-principal">
+        <div class="conteiner">
+            <h1 class="titulo-pagina">Semáforo da Acessibilidade</h1>
+            <p class="subtitulo-pagina">Informação e Comunicação Inclusiva no Ambiente Escolar</p>
+            
+            <nav aria-label="Menu Principal">
+                <ul class="menu-navegacao">
+                    <li><a href="#apresentacao">Apresentação</a></li>
+                    <li><a href="#semaforo">Semáforo Interativo</a></li>
+                    <li><a href="#comunicacao">Comunicação Inclusiva</a></li>
+                    <li><a href="#quiz">Quiz Educativo</a></li>
+                    <li><a href="#conclusao">Conclusão</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main id="conteudo-principal">
+
+        <!-- Seção 1: Apresentação -->
+        <section id="apresentacao" class="secao-conteudo">
+            <div class="conteiner">
+                <h2>Apresentação do Tema</h2>
+                <p>
+                    O projeto <strong>Semáforo da Acessibilidade</strong> é uma ferramenta educativa de conscientização inspirada nas cores do trânsito. Seu objetivo é orientar a comunidade escolar sobre formas respeitosas e eficientes de comunicação com estudantes autistas.
+                </p>
+                <div class="card-alerta">
+                    <p><strong>Importante:</strong> Esta ferramenta serve para orientar nossas atitudes de acolhimento e adaptação, e não para avaliar ou rotular o comportamento da pessoa autista. As necessidades de cada indivíduo são únicas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Semáforo Interativo -->
+        <section id="semaforo" class="secao-conteudo bg-suave">
+            <div class="conteiner">
+                <h2>Semáforo Interativo</h2>
+                <p>Clique nas luzes do semáforo ou utilize o teclado para navegar e entender cada etapa da comunicação:</p>
+
+                <div class="painel-semaforo">
+                    <!-- Estrutura do Semáforo -->
+                    <div class="estrutura-semaforo" role="region" aria-label="Semáforo Interativo">
+                        <button id="luz-vermelha" class="luz luz-vermelha" onclick="ativarSemaforo('vermelho')" aria-label="Luz Vermelha: Pare e Reavalie">
+                            <span class="icone-luz" aria-hidden="true">🛑</span>
+                            <span class="rotulo-luz">Vermelho</span>
+                        </button>
+                        <button id="luz-amarela" class="luz luz-amarela" onclick="ativarSemaforo('amarelo')" aria-label="Luz Amarela: Observe e Adapte">
+                            <span class="icone-luz" aria-hidden="true">⚠️</span>
+                            <span class="rotulo-luz">Amarelo</span>
+                        </button>
+                        <button id="luz-verde" class="luz luz-verde" onclick="ativarSemaforo('verde')" aria-label="Luz Verde: Pode Continuar">
+                            <span class="icone-luz" aria-hidden="true">✅</span>
+                            <span class="rotulo-luz">Verde</span>
+                        </button>
+                    </div>
+
+                    <!-- Caixa de Mensagem Explicativa -->
+                    <div id="caixa-explicacao" class="caixa-explicacao" aria-live="polite">
+                        <h3 id="titulo-mensagem">Selecione uma cor acima</h3>
+                        <p id="texto-mensagem">Clique em uma das luzes do semáforo para visualizar as diretrizes de comunicação.</p>
+                        <ul id="lista-mensagem" class="lista-diretrizes"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Comunicação Inclusiva -->
+        <section id="comunicacao" class="secao-conteudo">
+            <div class="conteiner">
+                <h2>Comunicação Inclusiva na Escola</h2>
+                <p>Boas práticas que fortalecem a convivência e o respeito no dia a dia escolar:</p>
+
+                <div class="grid-cards">
+                    <article class="card-dica">
+                        <h3>Clareza nas Instruções</h3>
+                        <p>Evite metáforas ambíguas ou instruções duplas. Seja direto e objetivo ao repassar orientações de tarefas.</p>
+                    </article>
+                    <article class="card-dica">
+                        <h3>Apoio Visual</h3>
+                        <p>Rotinas visuais, quadros de horários e ilustrações ajudam na organização e previsibilidade do estudante.</p>
+                    </article>
+                    <article class="card-dica">
+                        <h3>Ambiente Acolhedor</h3>
+                        <p>Respeite a sensibilidade sensorial a barulhos intensos ou luzes excessivas, oferecendo espaços mais calmos quando necessário.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 4: Quiz Educativo -->
+        <section id="quiz" class="secao-conteudo bg-suave">
+            <div class="conteiner">
+                <h2>Quiz Educativo</h2>
+                <p>Mensure seus conhecimentos sobre boas práticas de acessibilidade:</p>
+
+                <form id="form-quiz" class="formulario-quiz" onsubmit="validarQuiz(event)">
+                    <!-- Pergunta 1 -->
+                    <fieldset class="pergunta-group">
+                        <legend>1. Qual é a atitude correta ao fazer uma pergunta a um colega autista?</legend>
+                        <label class="opcao-resposta">
+                            <input type="radio" name="p1" value="a"> A) Pressionar por uma resposta rápida.
+                        </label>
+                        <label class="opcao-resposta">
+                            <input type="radio" name="p1" value="b"> B) Falar com clareza e dar tempo para ele responder.
+                        </label>
+                        <label class="opcao-resposta">
+                            <input type="radio" name="p1" value="c"> C) Falar alto pensando que ele não entendeu.
+                        </label>
+                    </fieldset>
+
+                    <!-- Pergunta 2 -->
+                    <fieldset class="pergunta-group">
+                        <legend>2. O que representa a cor Amarela no Semáforo da Acessibilidade?</legend>
+                        <label class="opcao-resposta">
+                            <input type="radio" name="p2" value="a"> A) Continuar falando da mesma forma sem mudanças.
+                        </label>
+                        <label class="opcao-resposta">
+                            <input type="radio" name="p2" value="b"> B) Ignorar as dificuldades de comunicação.
+                        </label>
+                        <label class="opcao-resposta">
+                            <input type="radio" name="p2" value="c"> C) Observar se o conteúdo foi compreendido e adaptar se necessário.
+                        </label>
+                    </fieldset>
+
+                    <button type="submit" class="botao-submit">Enviar Respostas</button>
+                </form>
+
+                <div id="resultado-quiz" class="caixa-resultado" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- Seção 5: Conclusão -->
+        <section id="conclusao" class="secao-conteudo">
+            <div class="conteiner texto-centralizado">
+                <h2>Conclusão e Conscientização</h2>
+                <p class="texto-conclusao">
+                    A verdadeira inclusão não exige que a pessoa autista se adapte a um ambiente rígido, mas sim que o ambiente e as pessoas ao seu redor desenvolvam empatia, paciência e estratégias acessíveis. Respeitar a neurodiversidade é construir uma escola onde todos têm voz e espaço.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="rodape-pagina">
+        <div class="conteiner">
+            <p><strong>Colégio Estadual Benedicto João Cordeiro</strong></p>
+            <p>Disciplina: Programação Front-End I | Prof. Reinaldo Ferreira Junior</p>
+            <p>Desenvolvido por: <span class="destaque-rodape">[Nome do Aluno]</span> | Turma: 2º ano Técnico em Desenvolvimento de Sistemas</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
